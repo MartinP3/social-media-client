@@ -12,7 +12,7 @@ describe("it creates a post after logging in", () => {
   // Logs in with a registered account's details, posts and deletes
   it("logs in with good credentials", () => {
     cy.get("#loginForm").within(() => {
-      cy.wait(500);
+      cy.wait(1000);
       cy.get("input[type='email']:visible")
         .should("exist")
         .type(`thefool@noroff.no`);
@@ -31,7 +31,7 @@ describe("it creates a post after logging in", () => {
     // Checks that the url is correct
     cy.url().should("include", "post");
     cy.get("#postForm").within(() => {
-      cy.wait(500);
+      cy.wait(1000);
       // Fills in post data
       cy.get("#postTitle").should("exist").type("the title");
       cy.wait(500);
