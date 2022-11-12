@@ -30,7 +30,7 @@ describe("Login authentication", () => {
   // Logs in with a registered account's details
   it("CAN login with good credentials", () => {
     cy.get("#loginForm").within(() => {
-      cy.wait(500);
+      cy.wait(2000);
       cy.get("input[type='email']:visible")
         .should("exist")
         .type(`thefool@noroff.no`);
