@@ -34,14 +34,14 @@ describe("it creates a post after logging in", () => {
       cy.wait(500);
       // Fills in post data
       cy.get("#postTitle").should("exist").type("the title");
-      cy.wait(200);
+      cy.wait(500);
       cy.get("#postTags").should("exist").type("cypress");
-      cy.wait(200);
+      cy.wait(500);
       cy.get("#postBody").should("exist").type("bottom text");
       cy.get("#postMedia")
         .should("exist")
         .type("https://picsum.photos/200/300?grayscale");
-      cy.wait(200);
+      cy.wait(500);
       cy.get("button[data-action='submit']").click({ force: true });
       cy.wait(5000);
       // I have tried to keep this in seperate "it(s)" but it keeps taking
