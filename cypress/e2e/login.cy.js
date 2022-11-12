@@ -18,7 +18,7 @@ describe("Login authentication", () => {
         .type(`bad@email.com`);
       cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("wrngPwd");
-      cy.wait(500);
+      cy.wait(1000);
       cy.get("button[type='submit']:visible").click();
       cy.wait(3000);
       cy.then(() => expect(localStorage.getItem("token")).to.be.null);
