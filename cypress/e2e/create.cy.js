@@ -12,17 +12,17 @@ describe("it creates a post after logging in", () => {
   // Logs in with a registered account's details, posts and deletes
   it("logs in with good credentials", () => {
     cy.get("#loginForm").within(() => {
-      cy.wait(1000);
+      cy.wait(2000);
       cy.get("input[type='email']:visible")
         .should("exist")
         .type(`thefool@noroff.no`);
       cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("password");
       cy.get("button[type='submit']:visible").click();
-      cy.wait(1000);
+      cy.wait(3000);
       cy.then(() => expect(localStorage.getItem("token")).to.not.be.null);
       cy.then(() => expect(localStorage.getItem("profile")).to.not.be.null);
-      cy.wait(3000);
+      cy.wait(1500);
     });
     // then clicks "new post"
     cy.get("a[href='./?view=post']").click();
