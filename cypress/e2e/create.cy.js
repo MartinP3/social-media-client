@@ -1,6 +1,6 @@
 describe("it creates a post after logging in", () => {
   it("opens up the site", () => {
-    cy.visit("http://127.0.0.1:5500/");
+    cy.visit("http://127.0.0.1:8080/");
     cy.clearLocalStorage();
     cy.get("#registerForm").within(() => {
       cy.get(".btn-close:visible").click();
