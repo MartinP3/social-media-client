@@ -36,6 +36,7 @@ describe("Login authentication", () => {
         .type(`thefool@noroff.no`);
       cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("password");
+      cy.wait(500);
       cy.get("button[type='submit']:visible").click();
       cy.wait(3000);
       cy.then(() => expect(localStorage.getItem("token")).to.not.be.null);
