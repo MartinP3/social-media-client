@@ -18,7 +18,7 @@ describe("it creates a post after logging in", () => {
         .type(`thefool@noroff.no`);
       cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("password");
-      cy.get("button[type='submit']:visible").click();
+      cy.get("button[type='submit']:visible").click({ force: true });
       cy.wait(3000);
       cy.then(() => expect(localStorage.getItem("token")).to.not.be.null);
       cy.then(() => expect(localStorage.getItem("profile")).to.not.be.null);
@@ -31,7 +31,7 @@ describe("it creates a post after logging in", () => {
     // Checks that the url is correct
     cy.url().should("include", "post");
     cy.get("#postForm").within(() => {
-      cy.wait(1000);
+      cy.wait(2000);
       // Fills in post data
       cy.get("#postTitle").should("exist").type("the title");
       cy.wait(500);
