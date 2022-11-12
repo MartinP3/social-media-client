@@ -20,9 +20,10 @@ describe("Login authentication", () => {
       cy.get("input[type='password']:visible").should("exist").type("wrngPwd");
       cy.wait(500);
       cy.get("button[type='submit']:visible").click();
-      cy.wait(2000);
+      cy.wait(3000);
       cy.then(() => expect(localStorage.getItem("token")).to.be.null);
       cy.then(() => expect(localStorage.getItem("profile")).to.be.null);
+      cy.wait(500);
     });
   });
 
@@ -36,7 +37,7 @@ describe("Login authentication", () => {
       cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("password");
       cy.get("button[type='submit']:visible").click();
-      cy.wait(2000);
+      cy.wait(3000);
       cy.then(() => expect(localStorage.getItem("token")).to.not.be.null);
       cy.then(() => expect(localStorage.getItem("profile")).to.not.be.null);
     });
