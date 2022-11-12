@@ -6,7 +6,7 @@ describe("it creates a post after logging in", () => {
       cy.get(".btn-close:visible").click();
       cy.wait(500);
     });
-    cy.get("button[data-auth='login']:visible").click();
+    cy.get("button[data-auth='login']:visible").click({ force: true });
   });
 
   // Logs in with a registered account's details, posts and deletes
@@ -16,13 +16,12 @@ describe("it creates a post after logging in", () => {
       cy.get("input[type='email']:visible")
         .should("exist")
         .type(`thefool@noroff.no`);
-      cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("password");
-      cy.get("button[type='submit']:visible").click();
+      cy.get("button[type='submit']:visible").click({ force: true });
       cy.wait(2000);
     });
     // then clicks "new post"
-    cy.get("a[href='./?view=post']").click();
+    cy.get("a[href='./?view=post']").click({ force: true });
     cy.wait(3000);
 
     // Checks that the url is correct
@@ -36,8 +35,8 @@ describe("it creates a post after logging in", () => {
     // I have tried to keep this in seperate "it(s)" but it keeps taking
     //away the token and profile so albeit ugly I will keep it this way for now
 
-    cy.get("button[data-action='submit']").click();
+    cy.get("button[data-action='submit']").click({ force: true });
     cy.wait(3500);
-    cy.get("button[data-action='delete']:visible").click();
+    cy.get("button[data-action='delete']:visible").click({ force: true });
   });
 });
