@@ -12,7 +12,7 @@ describe("Login authentication", () => {
   // Tries to log in with bad account details
   it("CAN'T login with bad credentials", () => {
     cy.get("#loginForm").within(() => {
-      cy.wait(500);
+      cy.wait(1000);
       cy.get("input[type='email']:visible")
         .should("exist")
         .type(`bad@email.com`);
