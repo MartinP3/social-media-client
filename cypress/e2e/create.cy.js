@@ -19,30 +19,25 @@ describe("it creates a post after logging in", () => {
       cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("password");
       cy.get("button[type='submit']:visible").click();
-      cy.wait(1500);
+      cy.wait(2000);
     });
     // then clicks "new post"
     cy.get("a[href='./?view=post']").click();
     cy.wait(3000);
 
     // Checks that the url is correct
-    cy.get("#postForm").within(() => {
-      cy.wait(2000);
-      // Fills in post data
-      cy.get("#postTitle").should("exist").type("the title");
-      cy.wait(500);
-      cy.get("#postTags").should("exist").type("cypress");
-      cy.wait(500);
-      cy.get("#postBody").should("exist").type("bottom text");
-      cy.get("#postMedia")
-        .should("exist")
-        .type("https://picsum.photos/200/300?grayscale");
-      cy.wait(500);
-      // I have tried to keep this in seperate "it(s)" but it keeps taking
-      //away the token and profile so albeit ugly I will keep it this way for now
-    });
+    cy.url().should("include", "post");
+    // Fills in post data
+    cy.get("#postTitle").should("exist").type("the title");
+    cy.get("#postTags").should("exist").type("cypress");
+    cy.get("#postBody").should("exist").type("bottom text");
+    // cy.get("#postMedia").should("exist").type("https://picsum.photos/200/200");
+
+    // I have tried to keep this in seperate "it(s)" but it keeps taking
+    //away the token and profile so albeit ugly I will keep it this way for now
+
     cy.get("button[data-action='submit']").click();
-    cy.wait(4000);
+    cy.wait(3500);
     cy.get("button[data-action='delete']:visible").click();
   });
 });
