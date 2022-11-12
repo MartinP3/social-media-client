@@ -19,7 +19,7 @@ describe("Login authentication", () => {
       cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("wrngPwd");
       cy.wait(1000);
-      cy.get("button[type='submit']:visible").click();
+      cy.get("button[type='submit']:visible").click({force: true});
       cy.wait(3000);
       cy.then(() => expect(localStorage.getItem("token")).to.be.null);
       cy.then(() => expect(localStorage.getItem("profile")).to.be.null);
@@ -37,7 +37,7 @@ describe("Login authentication", () => {
       cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("password");
       cy.wait(500);
-      cy.get("button[type='submit']:visible").click();
+      cy.get("button[type='submit']:visible").click({force: true});
       cy.wait(3000);
       cy.then(() => expect(localStorage.getItem("token")).to.not.be.null);
       cy.then(() => expect(localStorage.getItem("profile")).to.not.be.null);
