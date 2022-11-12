@@ -19,10 +19,10 @@ describe("it creates a post after logging in", () => {
       cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("password");
       cy.get("button[type='submit']:visible").click();
-      cy.wait(2000);
+      cy.wait(1000);
       cy.then(() => expect(localStorage.getItem("token")).to.not.be.null);
       cy.then(() => expect(localStorage.getItem("profile")).to.not.be.null);
-      cy.wait(1000);
+      cy.wait(3000);
     });
     // then clicks "new post"
     cy.get("a[href='./?view=post']").click();
@@ -34,11 +34,14 @@ describe("it creates a post after logging in", () => {
       cy.wait(500);
       // Fills in post data
       cy.get("#postTitle").should("exist").type("the title");
+      cy.wait(200);
       cy.get("#postTags").should("exist").type("cypress");
+      cy.wait(200);
       cy.get("#postBody").should("exist").type("bottom text");
       cy.get("#postMedia")
         .should("exist")
         .type("https://picsum.photos/200/300?grayscale");
+      cy.wait(200);
       cy.get("button[data-action='submit']").click({ force: true });
       cy.wait(5000);
       // I have tried to keep this in seperate "it(s)" but it keeps taking
