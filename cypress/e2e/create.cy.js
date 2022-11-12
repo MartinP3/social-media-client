@@ -26,7 +26,6 @@ describe("it creates a post after logging in", () => {
     cy.wait(1000);
 
     // Checks that the url is correct
-    cy.url().should("include", "post");
     cy.get("#postForm").within(() => {
       cy.wait(2000);
       // Fills in post data
