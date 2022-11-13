@@ -13,13 +13,17 @@ describe("it creates a post after logging in", () => {
   // Logs in with a registered account's details, posts and deletes
   it("logs in with good credentials", () => {
     cy.get("#loginForm").within(() => {
-      cy.wait(2000);
+      cy.wait(500);
       cy.get("input[type='email']:visible")
         .should("exist")
         .type(`thefool@noroff.no`);
+      cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("password");
       cy.get("button[type='submit']:visible").click();
       cy.wait(2000);
+      cy.then(() => expect(localStorage.getItem("token")).to.not.be.null);
+      cy.then(() => expect(localStorage.getItem("profile")).to.not.be.null);
+      cy.wait(1000);
     });
     // then clicks "new post"
     cy.get("a[href='./?view=post']").click();
@@ -36,8 +40,8 @@ describe("it creates a post after logging in", () => {
     // I have tried to keep this in seperate "it(s)" but it keeps taking
     //away the token and profile so albeit ugly I will keep it this way for now
 
-    cy.get("button[data-action='submit']").click({ force: true });
+    cy.get("button[data-action='submit']").click();
     cy.wait(3500);
-    cy.get("button[data-action='delete']:visible").click({ force: true });
+    cy.get("button[data-action='delete']:visible").click();
   });
 });

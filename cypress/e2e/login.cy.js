@@ -30,14 +30,17 @@ describe("Login authentication", () => {
   // Logs in with a registered account's details
   it("CAN login with good credentials", () => {
     cy.get("#loginForm").within(() => {
-      cy.wait(2000);
+      cy.wait(500);
       cy.get("input[type='email']:visible")
         .should("exist")
         .type(`thefool@noroff.no`);
       cy.wait(500);
       cy.get("input[type='password']:visible").should("exist").type("password");
-      cy.wait(2000);
       cy.get("button[type='submit']:visible").click();
+      cy.wait(2000);
+      cy.then(() => expect(localStorage.getItem("token")).to.not.be.null);
+      cy.then(() => expect(localStorage.getItem("profile")).to.not.be.null);
+      cy.wait(1000);
     });
   });
 });
