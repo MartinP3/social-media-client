@@ -1,7 +1,7 @@
 describe("it logs you out after logging in", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:8080/");
     cy.clearLocalStorage();
+    cy.visit("/");
     cy.get("#registerForm").within(() => {
       cy.get(".btn-close:visible").click();
       cy.wait(500);
