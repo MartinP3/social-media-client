@@ -18,10 +18,7 @@ describe("it creates a post after logging in", () => {
       cy.wait(500);
       cy.get("input[type='password']:visible").type("password");
       cy.get("button[type='submit']:visible").click();
-      cy.wait(3000);
-      cy.then(() => expect(localStorage.getItem("token")).to.not.be.null);
-      cy.then(() => expect(localStorage.getItem("profile")).to.not.be.null);
-      cy.wait(3000);
+      cy.wait(2000);
     });
     // then clicks "new post"
     cy.get("a[href='./?view=post']").click();
