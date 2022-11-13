@@ -7,21 +7,21 @@ describe("it creates a post after logging in", () => {
       cy.wait(500);
     });
     cy.get("button[data-auth='login']:visible").click();
+    cy.wait(2000);
   });
 
   // Logs in with a registered account's details, posts and deletes
   it("logs in with good credentials", () => {
     cy.get("#loginForm").within(() => {
-      cy.wait(1500);
-      cy.get("input[type='email']:visible")
-        .should("exist")
-        .type(`thefool@noroff.no`);
+      cy.wait(1000);
+      cy.get("input[type='email']:visible").type(`thefool@noroff.no`);
       cy.wait(500);
-      cy.get("input[type='password']:visible").should("exist").type("password");
+      cy.get("input[type='password']:visible").type("password");
       cy.get("button[type='submit']:visible").click();
       cy.wait(2000);
       cy.then(() => expect(localStorage.getItem("token")).to.not.be.null);
       cy.then(() => expect(localStorage.getItem("profile")).to.not.be.null);
+      cy.wait(2000);
     });
     // then clicks "new post"
     cy.get("a[href='./?view=post']").click();
@@ -43,7 +43,7 @@ describe("it creates a post after logging in", () => {
     //away the token and profile so albeit ugly I will keep it this way for now
 
     cy.get("button[data-action='submit']").click();
-    cy.wait(5000);
+    cy.wait(4000);
     cy.get("button[data-action='delete']:visible").click();
   });
 });
