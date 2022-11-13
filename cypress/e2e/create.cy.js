@@ -41,7 +41,7 @@ describe("it creates a post after logging in", () => {
     //away the token and profile so albeit ugly I will keep it this way for now
 
     cy.get("button[data-action='submit']").click();
-    cy.wait(3500);
+    cy.wait(1000);
     cy.get("button[data-action='delete']:visible").click();
   });
 });
