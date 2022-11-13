@@ -32,7 +32,7 @@ describe("Login authentication", () => {
     cy.get("button[data-auth='login']:visible").click();
     cy.wait(2000);
     cy.get("#loginForm").within(() => {
-      cy.wait(500);
+      cy.wait(1000);
       cy.get("input[type='email']:visible")
         .should("exist")
         .type(`thefool@noroff.no`);

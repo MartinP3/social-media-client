@@ -3,6 +3,7 @@ describe("it creates a post after logging in", () => {
     cy.clearLocalStorage();
     cy.visit("/");
     cy.get("#registerForm").within(() => {
+      cy.wait(500);
       cy.get(".btn-close:visible").click();
       cy.wait(500);
     });
@@ -17,6 +18,7 @@ describe("it creates a post after logging in", () => {
       cy.get("input[type='email']:visible").type(`thefool@noroff.no`);
       cy.wait(500);
       cy.get("input[type='password']:visible").type("password");
+      cy.wait(500);
       cy.get("button[type='submit']:visible").click();
       cy.wait(2000);
     });
@@ -35,6 +37,7 @@ describe("it creates a post after logging in", () => {
     // cy.get("#postMedia").should("exist").type("https://picsum.photos/200/200");
 
     cy.get("#postBody").should("exist").type("bottom text");
+    cy.wait(500);
     cy.get("button[data-action='submit']").click();
     cy.wait(4000);
     cy.get("button[data-action='delete']:visible").click();
