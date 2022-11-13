@@ -8,6 +8,7 @@ describe("Login authentication", () => {
       cy.wait(500);
     });
     cy.get("button[data-auth='login']:visible").click();
+    cy.wait(2000);
   });
 
   // Logs in with a registered account's details
