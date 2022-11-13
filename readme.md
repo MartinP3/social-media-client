@@ -9,7 +9,11 @@ There are github actions in place to check my files with tests before letting th
 
 [![Deploy static content to Pages](https://github.com/MartinP3/social-media-client/actions/workflows/pages.yml/badge.svg)](https://github.com/MartinP3/social-media-client/actions/workflows/pages.yml)
 
+60% given up
+
 [![Automated E2E Testing](https://github.com/MartinP3/social-media-client/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/MartinP3/social-media-client/actions/workflows/e2e-test.yml)
+
+99% given up, works perfectly locally but no matter how I go about it even when reading the errors, looking them up and adding wait everywhere to see if it works.
 
 [![Automated Unit Testing](https://github.com/MartinP3/social-media-client/actions/workflows/unit-test.yml/badge.svg)](https://github.com/MartinP3/social-media-client/actions/workflows/unit-test.yml)
 
