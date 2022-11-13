@@ -12,7 +12,7 @@ describe("it creates a post after logging in", () => {
   // Logs in with a registered account's details, posts and deletes
   it("logs in with good credentials", () => {
     cy.get("#loginForm").within(() => {
-      cy.wait(500);
+      cy.wait(1500);
       cy.get("input[type='email']:visible")
         .should("exist")
         .type(`thefool@noroff.no`);
@@ -32,8 +32,10 @@ describe("it creates a post after logging in", () => {
     // Fills in post data
     cy.get("#postTitle").should("exist").type("the title");
     cy.get("#postTags").should("exist").type("cypress");
+
     // Post media tends to cover the screen so much that it can't even see submit button
     // I tried adding scrollTo actions but no dice with my attempts.
+
     // cy.get("#postMedia").should("exist").type("https://picsum.photos/200/200");
     cy.get("#postBody").should("exist").type("bottom text");
 
@@ -41,7 +43,7 @@ describe("it creates a post after logging in", () => {
     //away the token and profile so albeit ugly I will keep it this way for now
 
     cy.get("button[data-action='submit']").click();
-    cy.wait(1000);
+    cy.wait(5000);
     cy.get("button[data-action='delete']:visible").click();
   });
 });
